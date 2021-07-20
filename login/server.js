@@ -10,9 +10,9 @@ const session = require('express-session');
 const filestore = require('session-file-store')(session);
 const connection = mysql.createConnection({
     host : 'us-cdbr-east-04.cleardb.com',
-    user : 'bbf20b36b56c86',
-    password : 'a93a641a',
-    database : 'heroku_765fbeac243ce00'
+    user : 'baddb73ad66b5e',
+    password : 'e1b952f1',
+    database : 'heroku_0d8013809c89e64'
 });
 
 //connection.connect(); 
