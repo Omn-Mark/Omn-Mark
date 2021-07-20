@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     database : 'heroku_765fbeac243ce00'
 });
 
-connection.connect(); 
+//connection.connect(); 
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -27,6 +27,19 @@ app.use(session({
     store: new filestore()
 }))
 //app.use('/api', api);
+
+function handleDisconnect() {                            
+    connection.on('error', function(err) {
+      console.log('connection error', err);
+      if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+        return handleDisconnect();                      
+      } else {                                    
+        throw err;                              
+      }
+    });
+  }
+  
+  handleDisconnect();
 
 app.get('/', (req, res) => { 
     res.sendFile(__dirname + '/public/login.html');
