@@ -110,6 +110,8 @@ app.post('/add', (req, res) => {
     res.sendFile(__dirname + '/public/joinComp.html');
 });
 
+connection.end();
+
 app.listen(PORT, () => {
     console.log('Hello wolrd');
 });
