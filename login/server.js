@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
     database : 'heroku_0d8013809c89e64'
 });
 
-//connection.connect(); 
+connection.connect(); 
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -29,7 +29,7 @@ app.use(session({
 }))
 //app.use('/api', api);
 
-function handleDisconnect() {
+/*function handleDisconnect() {
   connection.connect(function(err) {              // The server is either down
     if(err) {                                     // or restarting (takes a while sometimes).
       console.log('error when connecting to db:', err);
@@ -47,7 +47,7 @@ function handleDisconnect() {
   });
 }
 
-handleDisconnect();
+handleDisconnect();*/
 
 app.get('/', (req, res) => { 
     res.sendFile(__dirname + '/public/login.html');
@@ -116,4 +116,3 @@ app.listen(PORT, () => {
     console.log('Hello wolrd');
 });
 
-module.exports = app;
