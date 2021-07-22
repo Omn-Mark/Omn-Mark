@@ -100,8 +100,6 @@ app.get('/delete/:id', (req,res) => {
         });
 
 
-
-
 app.post('/add', (req, res) => {
     let testInsert = 'insert into test (user_id, password, name, gender) value (?, ?, ?, ?)';
     let params = [req.body.id, req.body.pwd, req.body.name, req.body.gender];   
@@ -109,7 +107,6 @@ app.post('/add', (req, res) => {
         if(err) {throw err;}
         console.log('ok db insert', result.insertId, req.body.name);
     })
-    connection.end();
     res.sendFile(__dirname + '/public/joinComp.html');
 });
 
