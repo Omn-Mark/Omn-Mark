@@ -86,7 +86,8 @@ app.post('/board_content', (req,res) => {
         if(err) {throw err;}
         console.log(result);
         res.render('board_content', { data : result });
-    })
+    });
+    connection.end();
 })
 
 app.get('/delete/:id', (req,res) => {
@@ -95,6 +96,7 @@ app.get('/delete/:id', (req,res) => {
             if(err) {throw err;}
             res.redirect('/board');
             });
+        connection.end();
         });
 
 
@@ -107,10 +109,9 @@ app.post('/add', (req, res) => {
         if(err) {throw err;}
         console.log('ok db insert', result.insertId, req.body.name);
     })
+    connection.end();
     res.sendFile(__dirname + '/public/joinComp.html');
 });
-
-connection.end();
 
 app.listen(PORT, () => {
     console.log('Hello wolrd');
